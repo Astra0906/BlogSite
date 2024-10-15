@@ -5,6 +5,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutBtn from './Logout';
 import './Header.css';
 import Logo from '../Logo';
+import { AiOutlineLogin } from "react-icons/ai";
+import { SiSimplelogin } from "react-icons/si";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,8 +25,8 @@ const Header = () => {
 
     const navLog = [
         { name: 'Home', slug: '/', icon: <FaHome />, active: true },
-        { name: 'Login', slug: '/login', active: !authStatus },
-        { name: 'Signup', slug: '/signup', active: !authStatus },
+        { name: 'Login', slug: '/login',icon:<AiOutlineLogin />, active: !authStatus },
+        { name: 'Signup', slug: '/signup',icon:<SiSimplelogin />, active: !authStatus },
     ];
 
     const linkClass = ({ isActive }) =>
@@ -32,7 +34,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="flex items-center justify-between px-8 py-4 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+            <header className="flex items-center justify-between px-8 py-5 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
                 <Logo/>
 
                 <nav className="hidden lg:flex space-x-6">

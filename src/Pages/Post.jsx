@@ -30,9 +30,13 @@ const Post = () => {
     }, [slug, navigate]);
 
     const deletePost = async () => {
-        await service.deleteFile(post.featuredImage);
-        const status = await service.deletePost(slug);
-        if (status) navigate('/');
+        await service.deleteFile(post.featuredImage).then(async()=>{
+            const status = await service.deletePost(slug);
+            if (status) navigate('/');
+        }).catch(()=>{
+            return "download failed !!";
+        })
+        
     };
 
     return (
