@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars, FaTimes, FaHome, FaClipboardList, FaPlusCircle } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaClipboardList, FaPlusCircle, FaInfoCircle, FaConciergeBell, FaEnvelope } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import LogoutBtn from './Logout';
@@ -21,12 +21,14 @@ const Header = () => {
         { name: 'Home', slug: '/', icon: <FaHome />, active: true },
         { name: 'Posts', slug: '/all-posts', icon: <FaClipboardList />, active: true },
         { name: 'Add Post', slug: '/add-post', icon: <FaPlusCircle />, active: authStatus },
+        
+        { name: 'Contact', slug: '/contact', icon: <FaEnvelope />, active: true },
     ];
 
     const navLog = [
         { name: 'Home', slug: '/', icon: <FaHome />, active: true },
-        { name: 'Login', slug: '/login',icon:<AiOutlineLogin />, active: !authStatus },
-        { name: 'Signup', slug: '/signup',icon:<SiSimplelogin />, active: !authStatus },
+        { name: 'Login', slug: '/login', icon: <AiOutlineLogin />, active: !authStatus },
+        { name: 'Signup', slug: '/signup', icon: <SiSimplelogin />, active: !authStatus },
     ];
 
     const linkClass = ({ isActive }) =>
@@ -35,45 +37,35 @@ const Header = () => {
     return (
         <>
             <header className="flex items-center justify-between px-8 py-5 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-                <Logo/>
+                <Logo />
 
                 <nav className="hidden lg:flex space-x-6">
-                    {authStatus && navItems.map(
-                        (item) =>
-                            item.active && (
-                                <NavLink
-                                    key={item.slug}
-                                    to={item.slug}
-                                    className={linkClass}
-                                >
-                                    <div className="flex items-center space-x-2">
-                                        {item.icon}
-                                        <span>{item.name}</span>
-                                    </div>
-                                </NavLink>
-                            )
-                    )}
-                    {!authStatus && navLog.map(
-                        (item) =>
-                            item.active && (
-                                <NavLink
-                                    key={item.slug}
-                                    to={item.slug}
-                                    className={linkClass}
-                                >
-                                    <div className="flex items-center space-x-2">
-                                        {item.icon}
-                                        <span>{item.name}</span>
-                                    </div>
-                                </NavLink>
-                            )
-                    )}
+                    {authStatus &&
+                        navItems.map(
+                            (item) =>
+                                item.active && (
+                                    <NavLink key={item.slug} to={item.slug} className={linkClass}>
+                                        <div className="flex items-center space-x-2">
+                                            {item.icon}
+                                            <span>{item.name}</span>
+                                        </div>
+                                    </NavLink>
+                                )
+                        )}
+                    {!authStatus &&
+                        navLog.map(
+                            (item) =>
+                                item.active && (
+                                    <NavLink key={item.slug} to={item.slug} className={linkClass}>
+                                        <div className="flex items-center space-x-2">
+                                            {item.icon}
+                                            <span>{item.name}</span>
+                                        </div>
+                                    </NavLink>
+                                )
+                        )}
 
-
-                    {authStatus ? (
-                        <LogoutBtn />
-                    ) : 
-                    null}
+                    {authStatus ? <LogoutBtn /> : null}
                 </nav>
 
                 <div className="lg:hidden">
@@ -111,25 +103,7 @@ const Header = () => {
                                     )
                             )}
 
-                            {authStatus && (
-                                <>
-                                    <NavLink
-                                        to="/profile"
-                                        className={linkClass}
-                                        onClick={toggleSidebar}
-                                    >
-                                        Profile
-                                    </NavLink>
-                                    <NavLink
-                                        to="/my-posts"
-                                        className={linkClass}
-                                        onClick={toggleSidebar}
-                                    >
-                                        My Posts
-                                    </NavLink>
-                                    <LogoutBtn />
-                                </>
-                            )}
+                            {authStatus ? <LogoutBtn /> : null}
 
                             {!authStatus &&
                                 navLog.map(
@@ -141,7 +115,10 @@ const Header = () => {
                                                 className={linkClass}
                                                 onClick={toggleSidebar}
                                             >
-                                                {item.name}
+                                                <div className="flex items-center space-x-2">
+                                                    {item.icon}
+                                                    <span>{item.name}</span>
+                                                </div>
                                             </NavLink>
                                         )
                                 )}
