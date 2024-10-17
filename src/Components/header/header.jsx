@@ -27,6 +27,7 @@ const Header = () => {
 
     const navLog = [
         { name: 'Home', slug: '/', icon: <FaHome />, active: true },
+        { name: 'Contact', slug: '/contact', icon: <FaEnvelope />, active: true },
         { name: 'Login', slug: '/login', icon: <AiOutlineLogin />, active: !authStatus },
         { name: 'Signup', slug: '/signup', icon: <SiSimplelogin />, active: !authStatus },
     ];
@@ -86,7 +87,7 @@ const Header = () => {
                         </div>
 
                         <nav className="flex flex-col space-y-4">
-                            {navItems.map(
+                            {authStatus && navItems.map(
                                 (item) =>
                                     item.active && (
                                         <NavLink
