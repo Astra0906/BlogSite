@@ -11,7 +11,7 @@ import Input from "./Input";
 import Header from "./header/header";
 import LogoutBtn from "./header/Logout";
 import PostForm from "./PostForm/PostForm";
-import Container from "./container/Container";
+import Container from "./Container/Container";
 import SectionDivider from "./SectionDiv";
 export {
     SectionDivider,
