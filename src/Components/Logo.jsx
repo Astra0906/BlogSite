@@ -11,7 +11,7 @@ const Logo = ({ className = "" }) => {
             onClick={() => navigate('/')}
         >
             <FaHome size={28} className="text-white" />
-            <span className="text-lg font-csty font-semibold  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+            <span className="text-xl font-cmax font-bold  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
                 BlogSite
             </span>
         </div>
