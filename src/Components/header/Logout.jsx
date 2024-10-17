@@ -14,7 +14,7 @@ const LogoutBtn = ({ onLogout }) => {
             dispatch(logout());
             toast.success('Successfully logged out!', {
                 position: "top-right",
-                autoClose: 3000,
+                autoClose: 5000,
                 hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -38,7 +38,7 @@ const LogoutBtn = ({ onLogout }) => {
         <>
             <button
                 onClick={handleLogout}
-                className="text-white bg-transparent border border-gray-500 px-3 py-1 rounded-md hover:text-black hover:bg-white transition duration-300"
+                className="px-3 py-1 border border-red-500 text-red-500 rounded-lg hover:text-black hover:bg-white transition duration-300"
             >
                 Logout
             </button>
